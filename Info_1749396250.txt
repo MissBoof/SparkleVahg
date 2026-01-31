@@ -1,0 +1,20 @@
+DateTime: 06/08/2025 23:24:10
+License: Formal
+Language: English(US)
+Board type: Arduino Nano RP2040
+Serial number: 01231249EDDCF803EE349454246070
+
+Trigger:
+	100	Hey Cortana
+
+Command:
+	10000	Shields down
+	10001	New Zombie
+	10002	Overshield
+	10003	Headshot
+	10004	Betrayal
+	10005	Kill a man jar oh
+	10006	Distraction
+	10007	King of the hill
+	10008	Boof gang
+

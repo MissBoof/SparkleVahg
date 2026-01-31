@@ -21,19 +21,24 @@ void setup() {
 }
 
 void loop() {
-   alltheTime();
+  // 1) Always run the idle animation step (non-blocking)
+  alltheTime();
 
+  // 2) Always check for voice commands (also non-blocking)
   if (Serial1.available()) {
     int commandID = Serial1.parseInt();
+
+    // Optional: flush any leftover newline/spaces if your sender includes them
+    while (Serial1.available()) Serial1.read();
+
     strip.clear();
     strip.show();
-    delay(50);
 
     Serial.print("📥 Received Command ID: ");
     Serial.println(commandID);
 
     switch (commandID) {
-      case 100: commandHeard(); break;
+      case 100:   commandHeard(); break;
       case 10000: haloArmorHitEffect(); break;
       case 10001: newZombieEffect(); break;
       case 10002: overshieldEffect(); break;
@@ -44,11 +49,12 @@ void loop() {
       case 10007: kingOfTheHillEffect(); break;
       case 10008: boofGangEffect(); break;
       default:
-         Serial.println("⚠️ Unknown command ID.");
+        Serial.println("⚠️ Unknown command ID.");
         break;
     }
   }
 }
+
 
 
 void alltheTime() {
